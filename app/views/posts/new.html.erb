@@ -1,6 +1,14 @@
-<div class="container">
-<% @post.each do |post| %>
-	<h1><%=   post.title %></h1>
-	<h1><%=   post.content %></h1>
-<% end %>
-</div>
+<h1>Create posts</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:posts, url:create_path) do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+
+      <%= f.submit "Create new post", class: "btn btn-primary" %>
+    <% end %>
+  </div>

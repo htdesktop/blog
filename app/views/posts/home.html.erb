@@ -1,1 +1,4 @@
-<h1>Hello, world!</h1>
+
+<% @post.each do |post| %>
+	<div><%=  post.title %></div>
+<% end %>
