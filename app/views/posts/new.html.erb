@@ -11,4 +11,15 @@
 
       <%= f.submit "Create new post", class: "btn btn-primary" %>
     <% end %>
+
+    <div class="col-md-12">Post list:</div>
+    <div class="col-md-6">
+      <% @post_list.each do |post| %>
+        <ul class="list_group">
+          <li class="list_group_item"><%= link_to post.title, {:controller =>'comments',:action => 'new',:post_id =>post.id} %></li>
+        </ul>
+      <% end %>
+    </div>
+
   </div>
+
