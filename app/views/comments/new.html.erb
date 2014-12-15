@@ -4,6 +4,17 @@
   <h2><%= @post_content %></h2>
 </div>
 
+
+  <div class="row">
+    <%  @comments_list.each do |cc| %>
+      <div class="col-md-6 col-md-offset-3">
+        Title: <%= cc.title %>
+        Content:<%= cc.content %>
+      </div>
+    <% end %>
+  </div>
+
+
 <div class="row">
   
   <div class="col-md-6 col-md-offset-3">

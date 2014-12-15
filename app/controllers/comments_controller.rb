@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @@post_id = params[:post_id]
     @post_content = Post.find(params[:post_id]).content
+    @comments_list = Post.find(params[:post_id]).Comment
   end
 
   def create
