@@ -1,0 +1,19 @@
+
+<h1>Post content/comment</h1>
+<div class="center">
+  <h2><%= @post_content %></h2>
+</div>
+
+<div class="row">
+  
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:comments, url: createComment_path) do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :content %>
+      <%= f.kindeditor :content %>
+
+      <%= f.submit "Create new comments", class: "btn btn-primary" %>
+    <% end %>
+  </div>

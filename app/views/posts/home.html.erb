@@ -1,4 +1,7 @@
 
 <% @post.each do |post| %>
-	<div><%=  post.title %></div>
+	<ul class="list-group">
+    <li class="list-group-item"><%= link_to post.title, {:controller =>'comments',:action => 'new',:post_id =>post.id} %></li>
+  </ul>
 <% end %>
+<%= paginate @post %>
