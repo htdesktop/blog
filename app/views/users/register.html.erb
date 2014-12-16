@@ -1,6 +1,17 @@
 <h1>Sign up</h1>
 
 <div class="row">
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="col-md-6 col-md-offset-3">
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:users, url:registerpost_path) do |f| %>
       <%= f.label :name %>

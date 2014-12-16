@@ -16,10 +16,12 @@ class PostsController < ApplicationController
 
   	@post = Post.new(post_param)
     @post.user_id = current_user.id
-  	@post.save
-  	@post = Post.page(params[:page])
-
-  	redirect_to(:action => 'home', :page => 1) 
+    if @post.save
+    	@post = Post.page(params[:page])
+    	redirect_to(:action => 'home', :page => 1) 
+    else
+      redirect_to(:action => 'new') 
+    end
 
   end
 

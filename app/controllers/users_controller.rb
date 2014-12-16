@@ -20,15 +20,18 @@ class UsersController < ApplicationController
       redirect_to(:controller => 'posts', :action => 'new') 
     else
       flash.now[:danger] = 'Invalid email/password combination'
-      render 'login'
+      redirect_to(:action => 'login') 
     end
   end
 
   def register_create
     @user = User.new(regieter_param)
-    @user.save
-    log_in(@user)
-    redirect_to(:controller => 'posts', :action => 'new') 
+    if @user.save
+      log_in(@user)
+      redirect_to(:controller => 'posts', :action => 'new') 
+    else
+      render 'register'
+    end
   end
 
   def regieter_param

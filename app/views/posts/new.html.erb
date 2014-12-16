@@ -1,6 +1,15 @@
 <h1>Create post</h1>
-
 <div class="row">
+  <% if @post.errors.any? %>
+      <div id="error_explanation" class="col-md-6 col-md-offset-3">
+        <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:posts, url:create_path) do |f| %>
       <%= f.label :title %>
