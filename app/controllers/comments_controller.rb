@@ -12,9 +12,10 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(commnet_param)
     @comment.post_id = @@post_id
-    @comment.user_id = current_user.id
+    if logged_in?
+      @comment.user_id = current_user.id
+    end
     @comment.save
-    debugger
     @post = Post.page()
     redirect_to(:controller => 'posts', :action => 'home', :page => 1) 
   end

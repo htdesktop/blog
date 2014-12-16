@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def logout
+    log_out
+    redirect_to(:controller => 'posts', :action => 'home') 
+  end
+
   def register
     @user = User.new
   end
