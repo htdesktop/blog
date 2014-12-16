@@ -1,0 +1,13 @@
+<h1>user profile</h1>
+<p>
+  <strong>Title:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Delete', user_path, method: :delete %>

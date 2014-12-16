@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   resources :posts 
-  resources  :comments 
+  resources  :comments
+  resources :users 
+
+  resources :sessions, :only => [:new, :create, :destroy]
 
   root 'posts#index'
   
-  get 'index' => 'users#index'
-  get 'login' => 'users#login'
-  get 'logout' => 'users#logout'
-  get 'register' => 'users#register'
-  post 'loginpost' => 'users#login_create'
-  post 'registerpost' => 'users#register_create'
-
 end

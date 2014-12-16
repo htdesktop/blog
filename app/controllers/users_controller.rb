@@ -1,41 +1,44 @@
 class UsersController < ApplicationController
   
-  def login
+  def index
+  end
+  
+  def show
+    @user = current_user
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def new
     @user = User.new
   end
 
-  def logout
-    log_out
-    redirect_to(:controller => 'posts', :action => 'index') 
-  end
-
-  def register
-    @user = User.new
-  end
-
-  def login_create
-    user = User.find_by(email: params[:users][:email].downcase)
-    if user && user.authenticate(params[:users][:password])
-      log_in(user)
-      redirect_to(:controller => 'posts', :action => 'new') 
-    else
-      flash.now[:danger] = 'Invalid email/password combination'
-      redirect_to(:action => 'login') 
-    end
-  end
-
-  def register_create
-    @user = User.new(regieter_param)
+  def create
+    @user = User.new(user_param)
     if @user.save
       log_in(@user)
       redirect_to(:controller => 'posts', :action => 'new') 
     else
-      render 'register'
+      redirect_to(:action => 'new') 
     end
   end
-
-  def regieter_param
-    params.require(:users).permit(:name, :email, :password)
+  
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_param)
+    redirect_to(:action => 'show') 
   end
   
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    log_out
+    redirect_to(:controller => 'posts', :action => 'index') 
+  end
+  
+  def user_param
+    params.require(:user).permit(:name, :email, :password)
+  end
 end

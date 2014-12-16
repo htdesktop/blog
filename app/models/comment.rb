@@ -6,6 +6,6 @@ class Comment < ActiveRecord::Base
 
   max_paginates_per 100
 
-  validates :content, presence: true, length: {maximum: 300}
+  validates :content, presence: true, length: { maximum: 300 }
   
 end
