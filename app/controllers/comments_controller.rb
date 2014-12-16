@@ -20,6 +20,18 @@ class CommentsController < ApplicationController
     redirect_to(:action => 'new', :post_id => @@post_id) 
   end
 
+  def show
+    
+  end
+
+  def update
+    
+  end
+
+  def destroy
+    
+  end
+
   def commnet_param
     params.require(:comments).permit(:title, :content)
   end

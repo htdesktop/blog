@@ -12,6 +12,19 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = current_user.Post.page(params[:page])
+    
+  end
+
+  def update
+    
+  end
+
+  def destroy
+    
+  end
+
   def create
 
   	@post = Post.new(post_param)

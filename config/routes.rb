@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   get 'home' => 'posts#home'
   get 'new'   => 'posts#new'
   post 'create' => 'posts#create'
+  get 'show' => 'posts#show'
 
 
   get 'newcomment' => 'comments#new'
   post 'createComment' => 'comments#create'
+  get 'showcomment' => 'comments#show'
 
   get 'index' => 'users#index'
   get 'login' => 'users#login'
