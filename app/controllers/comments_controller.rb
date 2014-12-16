@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     end
     @comment.save
     @post = Post.page()
-    redirect_to(:controller => 'posts', :action => 'home', :page => 1) 
+    redirect_to(:action => 'new', :post_id => @@post_id) 
   end
 
   def commnet_param
