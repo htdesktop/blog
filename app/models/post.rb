@@ -1,8 +1,8 @@
 class Post < ActiveRecord::Base
 
-  has_many :Comment
+  has_many :comments
 
-  belongs_to :User
+  belongs_to :user
 
   paginates_per 10
 

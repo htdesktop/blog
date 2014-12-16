@@ -1,0 +1,6 @@
+<% @comment.each do |cc| %>
+  <ul class="list-group">
+    <li class="list-group-item"><%= link_to cc.title, comment_path(cc) %></li>
+  </ul>
+<% end %>
+<%= paginate @comment %>

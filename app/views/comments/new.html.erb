@@ -8,8 +8,7 @@
   <div class="row">
     <%  @comments_list.each do |cc| %>
       <div class="col-md-6 col-md-offset-3">
-        Title: <%= cc.title %>
-        Content:<%= cc.content %>
+        Comment: <%= link_to cc.title, comment_path(cc) %>
       </div>
     <% end %>
   </div>
@@ -18,7 +17,7 @@
 <div class="row">
   
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:comments, url: createComment_path) do |f| %>
+    <%= form_for(@comment) do |f| %>
       <%= f.label :title %>
       <%= f.text_field :title %>
 

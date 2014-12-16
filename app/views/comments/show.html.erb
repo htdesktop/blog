@@ -1,1 +1,14 @@
 <h1>show comment list</h1>
+<p>
+  <strong>Title:</strong>
+  <%= @comment.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @comment.content %>
+</p>
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Delete', comment_path, method: :delete %> |
+<%= link_to 'Back', new_comment_path(:post_id => @comment.post_id) %> 

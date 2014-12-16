@@ -1,12 +1,16 @@
-<h1>show post list</h1>
+<h1>show post content</h1>
 
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
 
-<% @post.each do |post| %>
-  <ul class="list-group">
-    <li class="list-group-item"><%= link_to post.title, {:controller =>'comments',:action => 'new',:post_id =>post.id} %> 
-      <button class="btn btn_primary">edit</button>
-      <button class="btn btn_primary">delete</button>
-    </li>
-  </ul>
-<% end %>
-<%= paginate @post %>
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Delete', post_path, method: :delete %> |
+<%= link_to 'Back', posts_path %> |
+<%= link_to 'Comment', new_comment_path(:post_id => @post.id) %>

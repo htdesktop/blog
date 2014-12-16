@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def logout
     log_out
-    redirect_to(:controller => 'posts', :action => 'home') 
+    redirect_to(:controller => 'posts', :action => 'index') 
   end
 
   def register
