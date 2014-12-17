@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  load_and_authorize_resource :param_method => :commnet_param
+
   @@post_id = 0
 
   def index
