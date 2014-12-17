@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
 
   resources :posts 
+
+  get 'userpost' => 'posts#list'
+
   resources  :comments
+  
   resources :users 
 
   resources :sessions, :only => [:new, :create, :destroy]

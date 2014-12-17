@@ -54,6 +54,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def list
+    @post = current_user.posts.page(params[:page])
+  end
+
   def post_param
   	params.require(:post).permit(:title, :content)
   end

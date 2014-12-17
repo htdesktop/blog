@@ -4,12 +4,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
 
-  paginates_per 10
+  validates :title,  presence: true, length: { maximum: 50 }
 
-  max_paginates_per 100
-
-  validates :title,  presence: true, length: {maximum: 50}
-
-  validates :content, presence: true, length: {maximum: 300}
+  validates :content, presence: true, length: { maximum: 300 }
   
 end
