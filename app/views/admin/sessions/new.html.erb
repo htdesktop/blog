@@ -1,0 +1,15 @@
+<h1>Admin login page</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:user, url:admin_sessions_path) do |f| %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.submit "Login", class: "btn btn-primary" %>
+    <% end %>
+  </div>

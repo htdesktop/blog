@@ -16,6 +16,16 @@ Rails.application.routes.draw do
 
   resources :sessions, :only => [:new, :create, :destroy]
 
+  namespace :admin do
+    
+    resources :sessions, :only => [:new, :create, :destroy]
+
+    match '/signin', to: 'sessions#new', via: 'get'
+
+    resources :posts
+  
+  end
+
   root 'posts#index'
   
 end
