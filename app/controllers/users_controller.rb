@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource :param_method => :user_param
   
   def index
-    @user = User.page(params[:page])
+    @users = User.page(params[:page])
   end
   
   def show

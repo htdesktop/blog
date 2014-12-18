@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   load_and_authorize_resource :param_method => :comment_param, except: [:create]
 
   def index
-    @comment = Comment.page(params[:page])
+    @comments = Comment.page(params[:page])
   end
 
   def new

@@ -10,7 +10,7 @@
   <div class="col-md-2">actions</div>
 </div>
 
-<% @comment.each do |p| %>
+<% @comments.each do |p| %>
   <div class="row show-grid">
     <div class="col-md-1"><%= p.id %></div>
     <% if p.post != nil %>
@@ -37,4 +37,4 @@
     </div>
   </div>
 <% end %>
-<%= paginate @comment %>
+<%= paginate @comments %>

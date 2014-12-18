@@ -1,6 +1,6 @@
-<% @user.each do |user| %>
+<% @users.each do |user| %>
   <ul class="list-group">
     <li class="list-group-item"><%= link_to user.name, user_path(user) %></li>
   </ul>
 <% end %>
-<%= paginate @user %>
+<%= paginate @users %>

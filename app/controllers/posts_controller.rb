@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   load_and_authorize_resource :param_method => :post_param, except: [:create]
 
   def index
-  	@post = Post.page(params[:page])
+  	@posts = Post.page(params[:page])
   end
   
   def new  

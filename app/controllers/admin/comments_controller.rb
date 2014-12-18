@@ -2,7 +2,7 @@ class Admin::CommentsController < Admin::BaseController
   load_and_authorize_resource :param_method => :comment_param
   
   def index
-    @comment = Comment.page(params[:page])
+    @comments = Comment.page(params[:page])
   end
 
   def update

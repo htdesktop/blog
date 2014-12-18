@@ -10,8 +10,8 @@ class Ability
        can :create, [Post, Comment]
        can :read,  [Post, Comment]
 
-       can [:update, :destroy], User, :id => user.id
-       can [:read, :create], User
+       can [:show,:update, :destroy], User, :id => user.id
+       can :create, User
     else
        can :read, [Post, Comment]
        can :create, [User,Comment]
