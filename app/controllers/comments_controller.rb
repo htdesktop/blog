@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to(:action => 'new', :post_id => params[:post_id]) 
   end
-
+private
   def comment_param
     params.require(:comment).permit(:title, :content)
   end

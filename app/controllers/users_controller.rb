@@ -41,6 +41,7 @@ class UsersController < ApplicationController
     redirect_to(:controller => 'posts', :action => 'index') 
   end
   
+private
   def user_param
     params.require(:user).permit(:name, :email, :password)
   end

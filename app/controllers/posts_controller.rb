@@ -56,7 +56,7 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+private
   def post_param
   	params.require(:post).permit(:title, :content)
   end
