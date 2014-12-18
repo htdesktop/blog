@@ -1,6 +1,0 @@
-<% @post.each do |post| %>
-  <ul class="list-group">
-    <li class="list-group-item"><%= link_to post.title, post_path(post) %></li>
-  </ul>
-<% end %>
-<%= paginate @post %>

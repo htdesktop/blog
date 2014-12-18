@@ -1,8 +1,6 @@
 class CommentsController < ApplicationController
 
-  load_and_authorize_resource :param_method => :commnet_param
-
-  @@post_id = 0
+  load_and_authorize_resource :param_method => :comment_param
 
   def index
     @comment = Comment.page(params[:page])
@@ -10,17 +8,16 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
-    @@post_id = params[:post_id]
     @post_content = Post.find(params[:post_id]).content
     @comments_list = Post.find(params[:post_id]).comments
   end
 
   def create
-    @comment = Comment.new(commnet_param)
-    @comment.post_id = @@post_id
+    @comment = Comment.new(comment_param)
+    @comment.post_id = params[:post_id]
     @comment.user_id = current_user.id if logged_in?
     @comment.save
-    redirect_to(:action => 'new', :post_id => @@post_id) 
+    redirect_to(:action => 'new', :post_id => params[:post_id]) 
   end
 
   def show
@@ -33,17 +30,17 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    @comment.update(commnet_param)
-    redirect_to(:action => 'new', :post_id => @@post_id) 
+    @comment.update(comment_param)
+    redirect_to(:action => 'new', :post_id => params[:post_id]) 
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to(:action => 'new', :post_id => @@post_id) 
+    redirect_to(:action => 'new', :post_id => params[:post_id]) 
   end
 
-  def commnet_param
+  def comment_param
     params.require(:comment).permit(:title, :content)
   end
 

@@ -1,16 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
+  resources :posts do
 
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  resources :posts 
-
-  get 'userpost' => 'posts#list'
-
-  resources  :comments
+    resources  :comments
+    
+  end
   
   resources :users 
 

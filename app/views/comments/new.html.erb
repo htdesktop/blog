@@ -4,20 +4,19 @@
   <h2><%= @post_content %></h2>
 </div>
 
-
-  <div class="row">
+ <div class="row">
     <%  @comments_list.each do |cc| %>
       <div class="col-md-6 col-md-offset-3">
-        Comment: <%= link_to cc.title, comment_path(cc) %>
+        Comment: <%= link_to cc.title, post_comment_path({ :id => cc.id }) %>
       </div>
     <% end %>
   </div>
-
+ 
 
 <div class="row">
   
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@comment) do |f| %>
+    <%= form_for(:comment, url: post_comments_path) do |f| %>
       <%= f.label :title %>
       <%= f.text_field :title %>
 

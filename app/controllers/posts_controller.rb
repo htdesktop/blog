@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 
   load_and_authorize_resource :param_method => :post_param
-  skip_load_and_authorize_resource :only => :list
 
   def index
   	@post = Post.page(params[:page])
@@ -56,10 +55,6 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def list
-    @post = current_user.posts.page(params[:page])
   end
 
   def post_param
