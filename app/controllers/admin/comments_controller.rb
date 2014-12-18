@@ -5,23 +5,7 @@ class Admin::CommentsController < Admin::BaseController
     @comment = Comment.page(params[:page])
   end
 
-  def show
-     @comment = Comment.find(params[:id])
-  end
-
-  def new
-  end
-
-  def create
-    
-  end
-
-  def edit
-    @comment = Comment.find(params[:id])
-  end
-
   def update
-    @comment = Comment.find(params[:id])
     respond_to do |format|
       if @comment.update(comment_param)
         format.html { render :show }
@@ -33,7 +17,6 @@ class Admin::CommentsController < Admin::BaseController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to admin_comments_url, notice: 'Comment was successfully destroyed.' }

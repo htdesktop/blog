@@ -9,6 +9,6 @@
   <%= @comment.content %>
 </p>
 
-<%= link_to 'Edit', edit_post_comment_path({ :id => @comment.id }) %> |
+<%= link_to 'Edit', edit_post_comment_path({ :id => @comment.id }), 'data-no-turbolink' => true %> |
 <%= link_to 'Delete', post_comment_path, method: :delete %> |
-<%= link_to 'Back', new_post_comment_path(:post_id => @comment.post_id) %> 
+<%= link_to 'Back', new_post_comment_path(:post_id => @comment.post_id),'data-no-turbolink' => true %> 

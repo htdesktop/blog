@@ -11,7 +11,7 @@
 </p>
 
 <% if can? :update, @post%>
-  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Edit', edit_post_path(@post),'data-no-turbolink' => true %> |
 <% end %>
 <% if can? :destroy, @post %>
   <%= link_to 'Delete', post_path, method: :delete %> |
@@ -19,5 +19,5 @@
 <%= link_to 'Back', posts_path %> |
 
 <% if can? :create, Comment %>
-  <%= link_to 'Comment', new_post_comment_path(:post_id => @post.id) %>
+  <%= link_to 'Comment', new_post_comment_path(:post_id => @post.id), 'data-no-turbolink' => true %>
 <% end %>

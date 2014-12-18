@@ -14,28 +14,21 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def new
-    @user = User.new
-  end
-
   def create
-    @user = User.new(user_param)
     if @user.save
       log_in(@user)
-      redirect_to(:controller => 'posts', :action => 'new') 
+      redirect_to new_post_url #(:controller => 'posts', :action => 'new') 
     else
-      redirect_to(:action => 'new') 
+      render :new #(:action => 'new') 
     end
   end
   
   def update
-    @user = User.find(params[:id])
     @user.update(user_param)
     redirect_to(:action => 'show') 
   end
   
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     log_out
     redirect_to(:controller => 'posts', :action => 'index') 

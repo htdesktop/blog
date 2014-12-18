@@ -1,42 +1,27 @@
 class PostsController < ApplicationController
 
-  load_and_authorize_resource :param_method => :post_param
+  load_and_authorize_resource :param_method => :post_param, except: [:create]
 
   def index
   	@post = Post.page(params[:page])
   end
   
   def new  
-    if logged_in?
-  	  @post = Post.new
-      @post_list = current_user.posts
-    else
-      redirect_to(:action => 'index') 
-    end
-  end
-
-  def show
-    #@post = Post.find(params[:id])
-  end
-
-  def edit
-    #@post = Post.find(params[:id])
+	  @post = Post.new
+    @post_list = current_user.posts
   end
 
   def create
-  	@post = Post.new(post_param)
-    @post.user_id = current_user.id
+  	@post = current_user.posts.new(post_param)
+    authorize! :create, @post
     if @post.save
-    	@post = Post.page(params[:page])
-    	redirect_to(:action => 'index') 
+    	redirect_to(:action => 'index', notice: 'success') 
     else
-      redirect_to(:action => 'new') 
+      render :new
     end
-
   end
 
   def update
-    #@post = Post.find(params[:id])
     respond_to do |format|
       if @post.update(post_param)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -49,7 +34,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    #@post = Post.find(params[:id])
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }

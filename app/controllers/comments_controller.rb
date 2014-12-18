@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  load_and_authorize_resource :param_method => :comment_param
+  load_and_authorize_resource :param_method => :comment_param, except: [:create]
 
   def index
     @comment = Comment.page(params[:page])
@@ -13,29 +13,23 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_param)
-    @comment.post_id = params[:post_id]
+    post = Post.find(params[:post_id])
+    @comment = post.comments.new(comment_param)
+    authorize! :create, @comment
     @comment.user_id = current_user.id if logged_in?
-    @comment.save
-    redirect_to(:action => 'new', :post_id => params[:post_id]) 
-  end
-
-  def show
-    @comment = Comment.find(params[:id])
-  end
-
-  def edit
-    @comment = Comment.find(params[:id])
+    if @comment.save
+      redirect_to(:action => 'new', :post_id => params[:post_id]) 
+    else
+      render :new
+    end
   end
 
   def update
-    @comment = Comment.find(params[:id])
     @comment.update(comment_param)
     redirect_to(:action => 'new', :post_id => params[:post_id]) 
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to(:action => 'new', :post_id => params[:post_id]) 
   end
