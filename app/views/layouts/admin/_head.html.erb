@@ -7,11 +7,7 @@
           <li><%= link_to "Users", admin_users_path %></li>
           <li><%= link_to "Posts", admin_posts_path %></li>
           <li><%= link_to "Comments", admin_comments_path %></li>
-        </ul>
-      <% else %>
-        <ul class="nav navbar-nav pull-right">
-          <li><%= link_to "Sign in", "" %></li>
-        </ul>
+          <li><%= link_to "Log out", admin_session_path(:id => 1), :method => "delete" %></li>
       <% end %>
     </nav>
   </div>

@@ -1,5 +1,5 @@
 class Admin::PostsController < Admin::BaseController
-  
+  load_and_authorize_resource :param_method => :post_param
   def index
     @post = Post.page(params[:page])
   end

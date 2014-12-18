@@ -17,6 +17,7 @@ class Admin::SessionsController < Admin::BaseController
 
   def destroy
     log_out
+    redirect_to(:action => 'new') 
   end
 
 end
