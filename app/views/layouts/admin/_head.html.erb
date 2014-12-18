@@ -1,0 +1,18 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Admin", root_path, id: "logo" %>
+    <nav>
+      <%  if logged_in? %>
+        <ul class="nav navbar-nav pull-right">
+          <li><%= link_to "Users", admin_users_path %></li>
+          <li><%= link_to "Posts", admin_posts_path %></li>
+          <li><%= link_to "Comments", admin_comments_path %></li>
+        </ul>
+      <% else %>
+        <ul class="nav navbar-nav pull-right">
+          <li><%= link_to "Sign in", "" %></li>
+        </ul>
+      <% end %>
+    </nav>
+  </div>
+</header>
