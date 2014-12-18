@@ -14,6 +14,7 @@ gem 'kaminari'
 gem 'rails_kindeditor',     '~> 0.3.11' 
 gem 'bcrypt',               '3.1.7'
 gem 'cancancan',            '~> 1.9'
+gem 'simple_form'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

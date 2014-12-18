@@ -1,24 +1,14 @@
 <h1>Create post</h1>
 <div class="row">
-  <% if @post.errors.any? %>
-      <div id="error_explanation" class="col-md-6 col-md-offset-3">
-        <ul>
-          <% @post.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-  <% end %>
-
+  
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@post) do |f| %>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+    <%= simple_form_for(@post) do |f| %>
 
-      <%= f.label :content %>
-      <%= f.kindeditor :content %>
+      <%= f.input :title %>
 
-      <%= f.submit "Create new post", class: "btn btn-primary" %>
+      <%= f.input :content, :as => :kindeditor %>
+
+      <%= f.button :submit, "Create new post", class: "btn btn-primary" %>
     <% end %>
 
     <div class="col-md-12">Post list:</div>
@@ -29,6 +19,8 @@
         </ul>
       <% end %>
     </div>
+
+  </div>
 
   </div>
 

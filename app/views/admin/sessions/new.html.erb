@@ -2,14 +2,13 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:user, url:admin_sessions_path) do |f| %>
+    <%= simple_form_for(:user, url:admin_sessions_path) do |f| %>
       
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.input :name, placeholder: 'Your name please' %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.input :password, placeholder: 'user@domain.com' %>
 
-      <%= f.submit "Login", class: "btn btn-primary" %>
+      <%= f.button :submit, "Login", class: "btn btn-primary" %>
+      
     <% end %>
   </div>

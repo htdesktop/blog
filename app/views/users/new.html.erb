@@ -2,33 +2,20 @@
 
 <div class="row">
 
-  <% if @user.errors.any? %>
-    <div id="error_explanation" class="col-md-6 col-md-offset-3">
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+    <%= simple_form_for(@user) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.input :name, placeholder: 'eg.James' %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.input :email, placeholder: 'user@domain.com' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.input :password, placeholder: 'password' %>
 
-      <%= f.submit "Create user count", class: "btn btn-primary" %>
+      <%= f.input :password_confirmation, placeholder: 'password' %>
+
+      <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
 
    </div>
 
-  </div>
+</div>
