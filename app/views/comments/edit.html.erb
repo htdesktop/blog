@@ -1,4 +1,4 @@
-<%= simple_form_for(:comment, url: post_comment_path, :method => 'put') do |f| %>
+<%= simple_form_for(:comment, url: post_comment_path, :method => 'patch') do |f| %>
   
 <div class="row">
   
@@ -10,6 +10,8 @@
 
       <%= f.button :submit, "Update comment", class: "btn btn-primary" %>
   </div>
+
+
 
 </div>
 

@@ -7,8 +7,7 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = Comment.new
-    @post_content = Post.find(params[:post_id]).content
+    @post = Post.find(params[:post_id])
     @comments_list = Post.find(params[:post_id]).comments
   end
 
@@ -17,25 +16,39 @@ class CommentsController < ApplicationController
     @comment = post.comments.new(comment_param)
     authorize! :create, @comment
     @comment.user_id = current_user.id if logged_in?
-    if @comment.save
-      redirect_to(:action => 'new', :post_id => params[:post_id]) 
-    else
-      render :new
+
+    respond_to do |format|
+
+      if @comment.save
+        format.html{ redirect_to(:action => 'new', :post_id => params[:post_id]) }
+        format.json{ render json: @comment, status: :created, location: @comment }  
+        format.js
+      else
+        format.html { render action: "new" }
+        format.json { render json: @comment, status: :created }
+        format.js
+      end
+
     end
+
+
   end
 
   def update
-    @comment.update(comment_param)
-    redirect_to(:action => 'new', :post_id => params[:post_id]) 
+    if @comment.update(comment_param)
+      redirect_to(:action => 'new', :post_id => params[:post_id]) 
+    else
+      render :edit
+    end
   end
 
   def destroy
     @comment.destroy
     redirect_to(:action => 'new', :post_id => params[:post_id]) 
   end
+
 private
   def comment_param
     params.require(:comment).permit(:title, :content)
   end
-
 end
