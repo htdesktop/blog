@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   
   def new  
 	  @post = Post.new
+    @post.build_image
     @post_list = current_user.posts
   end
 
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
   end
 private
   def post_param
-  	params.require(:post).permit(:title, :content)
+  	params.require(:post).permit(:title, :content, image_attributes: [:path])
   end
 
 end

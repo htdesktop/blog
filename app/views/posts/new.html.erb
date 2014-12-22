@@ -7,8 +7,13 @@
       <%= f.input :title %>
 
       <%= f.input :content, :as => :kindeditor %>
+       
+      <%= f.simple_fields_for :image, @post.image do |image_fields| %>  
+        <%= image_fields.input :path %>  
+      <% end %>
 
       <%= f.button :submit, "Create new post", class: "btn btn-primary" %>
+
     <% end %>
 
     <div class="col-md-12">Post list:</div>

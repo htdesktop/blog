@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
 
   def new
     @post = Post.find(params[:post_id])
+    @comment = @post.comments.build
+    @comment.build_image
     @comments_list = Post.find(params[:post_id]).comments
   end
 
@@ -49,6 +51,6 @@ class CommentsController < ApplicationController
 
 private
   def comment_param
-    params.require(:comment).permit(:title, :content)
+    params.require(:comment).permit(:title, :content, image_attributes: [:path])
   end
 end

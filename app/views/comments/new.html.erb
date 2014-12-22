@@ -16,11 +16,15 @@
 <div class="row" id='form_div'>
   
     <div class="col-md-6 col-md-offset-3">
-      <%= simple_form_for([@post, @post.comments.build], :remote => true) do |f| %>
+      <%= simple_form_for([@post, @comment], :remote => true, authenticity_token: true) do |f| %>
 
         <%= f.input :title %>
 
         <%= f.input :content, :as => :kindeditor %>
+
+        <%= f.simple_fields_for :image, @comment.image do |image_fields| %>  
+          <%= image_fields.input :path %>  
+        <% end %>
 
         <%= f.button :submit, "Create new comments", class: "btn btn-primary" %>
       

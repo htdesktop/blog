@@ -9,6 +9,9 @@
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
+<div>
+  <%= image_tag(@post.image.path_url(:thumb)) if @post.image %>
+</div>
 
 <% if can? :update, @post%>
   <%= link_to 'Edit', edit_post_path(@post),'data-no-turbolink' => true %> |
